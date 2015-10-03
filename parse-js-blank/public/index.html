@@ -33,9 +33,9 @@
     Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
 
     
-		var TestObject = Parse.Object.extend("TestObject");
-		var testObject = new TestObject();
-			testObject.save({foo: "bar"}, {
+		var UserProfile = Parse.Object.extend("UserProfile");
+		var userProfile = new UserProfile();
+			userProfile.save({name: "Tim", health: 100, sanity: 25}, {
 			success: function(object) {
 				$(".success").show();
 			},

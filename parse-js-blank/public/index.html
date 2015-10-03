@@ -13,13 +13,14 @@
 	<script type="text/javascript" src="js/sizing.js"></script>
 	<script type="text/javascript" src="js/popout.js"></script>
 	<script type="text/javascript" src="js/map.js"></script>
+	<script type="text/javascript" src="js/checkin.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTvAA8ktn5QDX2Txus7Tl_Dwj4Z5RSs14&signed_in=true&callback=initMap" async defer></script>
 	<!--<script type="text/javascript" src="js/handlebars-v4.0.2.js"></script>-->
 </head>
 
 <body>
 	<div id="main">
-		<div id="toolbar"><div id="title">Study<br>Spaces</div><div id="checkin"><br>check in</div></div>
+		<div id="toolbar"><div id="title">Study<br>Spaces</div><a href="javascript:checkin()"><div id="checkin"><br>check in</div></a></div>
 		<div id="lower">
 			<div id="map"></div>
 			<div id="friends">Friends

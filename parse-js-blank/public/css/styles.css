@@ -1,6 +1,12 @@
 body {
 	margin: 0px 0px;
 }
+
+a{
+	text-decoration:none;
+	color:inherit;
+}
+
 #main {
 	margin: 0px 0px;
 	text-align: center;
@@ -17,6 +23,7 @@ body {
 		#checkin {
 			display: inline-block;
 			float: right;
+			height: 100%;
 			width: 10%;
 			vertical-align: text-bottom;
 		}

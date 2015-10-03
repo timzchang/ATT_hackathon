@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<title>My first Google Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTvAA8ktn5QDX2Txus7Tl_Dwj4Z5RSs14&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+      	var myLatLng = new google.maps.LatLng(54.124634, -3.237029)
+        var mapOptions = {
+          center: myLatLng,
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.SATELLITE
+          };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        
+        var myMarker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: "A place on Earth",
+          draggable: true,
+          })
+        }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>
+

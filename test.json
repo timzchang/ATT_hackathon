@@ -1,0 +1,6 @@
+Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g"); 
+
+var Location = Parse.Object.extend("Location");
+var location = new Location();
+
+location.save({userID: 0, latitude: 46.0, longitude: -86.1});

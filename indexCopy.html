@@ -14,43 +14,25 @@
 <body>
   
 	<div id="main">
-		<div style="display:none" class="error">
+		<div style="display:block" class="error">
 			Looks like there was a problem saving the test object. Make sure you've set your application ID and javascript key correctly in the call to <code>Parse.initialize</code> in this file.
 		</div>
 
-		<div style="display:none" class="success">
+		<div style="display:block" class="success">
 			<p>We've also just created your first object using the following code:</p>
-      
-        <code>
-          var TestObject = Parse.Object.extend("TestObject");<br/>
-          var testObject = new TestObject();<br/>
-          testObject.save({foo: "bar"});
-        </code>
-    </div>
-  </div>
 
-  <script type="text/javascript">
-    Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
+		</div>
+		<div style="display:block" class="success" id="add">
+			<button type="button">Add</button>
+		</div>
+	</div>
 
-    
-		var TestObject = Parse.Object.extend("TestObject");
-		var testObject = new TestObject();
-			testObject.save({foo: "bar"}, {
-			success: function(object) {
-				$(".success").show();
-			},
-			error: function(model, error) {
-				$(".error").show();
-			}
-		});
-	</script>
-  <script type="text/javascript">
-	Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
+	 <script type="text/javascript">
+		Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
 		
 		var LocationObject = Parse.Object.extend("LocationObject");
-//		Parse.Object.registerSubclass('LocationObject', LocationObject);
 /*		var locationObject = new LocationObject();
-			locationObject.save({userID: 2, lat: 90, lon: 0}, {
+		locationObject.save({userID: 3, lat: 46, lon: -86}, {
 			success: function(object) {
 				$(".success").show();
 			},
@@ -59,27 +41,33 @@
 			}
 		});*/
 
-		var query = new Parse.Query(LocationObject);
-		query.lessThan("lat", 40);
-		query.find({
-			success: function(results) {
-				for(var i = 0; i < results.length; i++) {
-					results[i].set("lat", 41);
-					results[i].save();
-				}
+		var BuildingObject = Parse.Object.extend("BuildingObject");
+		var buildingObject = new BuildingObject();
+		buildingObject.save({name: "Building", count: 0}, {
+			success: function(object) {
+				$(".success").show();
 			},
-			error: function(error) {
-				console.log("Error");
+			error: function(model, error) {
+				$(".error").show();
 			}
 		});
-/*		query.get("HARCsso8oX", {
-			success: function(object) {
-				object.destroy({});
+
+		var query = new Parse.Query(LocationObject);
+		query.equalTo("objectID");
+		query.count({
+			success: function(count) {
+				buildingObject.set("count", count);
+				buildingObject.save();
 			},
 			error: function(error) {
-				console.log("Error in destroy");
+				//failed
 			}
-		});*/
+		});
+
+		$("#add").click(function() {
+			buildingObject.increment("count");
+			buildingObject.save();			
+		});
 
 	</script>
 </body>

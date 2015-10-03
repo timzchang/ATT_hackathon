@@ -5,7 +5,7 @@ var hp = 99;
 var LocationObject = Parse.Object.extend("LocationObject");
 
                 var BuildingObject = Parse.Object.extend("BuildingObject");
-                var buildingObject = new BuildingObject();
+                // var buildingObject = new BuildingObject();
                 buildingObject.save({name: "Building", count: 0}, {
                         success: function(object) {
                                 $(".success").show();
@@ -28,9 +28,10 @@ var LocationObject = Parse.Object.extend("LocationObject");
                 });
 
 
-$("#test-button").click(function() {
+$("#add-button").click(function() {
 	alert("Ya clicked me");
 	var userProfile = new UserProfile();
+	userProfile.set()
 	userProfile.save({name: "Tim", health: hp--, sanity: 25}, {
 		success: function(object) {
 			$(".success").show();
@@ -43,8 +44,10 @@ $("#test-button").click(function() {
 	});
 });
 
-$("#add").click(function() {
-	if(document.getElementById("add").value == "Check In") {
+
+function checkin() {
+	var text = document.getElementById("checkin").innerHTML;
+	if (text==="<br>check in") {
 		var locationObject = new LocationObject();
 		locationObject.save({userID: 5, lat: 25, lon: -5}, {
 			success: function(object) {
@@ -56,20 +59,63 @@ $("#add").click(function() {
                 });
                 buildingObject.increment("count");
                 buildingObject.save();
-                document.getElementById("add").value = "Check Out";
+		document.getElementById("checkin").innerHTML = "<br>check out";
+	}
+	else {
+		document.getElementById("checkin").innerHTML = "<br>check in";
+	}
+};
+/*
+$("#checkin").click(function() {
+	if(document.getElementById("checkin").innerHTML === "Check In") {
+		var locationObject = new LocationObject();
+		locationObject.save({userID: 5, lat: 25, lon: -5}, {
+			success: function(object) {
+				$(".success").show();
+                        },
+                        error: function(model, error) {
+                                $(".error").show();
+                        }
+                });
+                buildingObject.increment("count");
+                buildingObject.save();
+                document.getElementById("checkin").innerHTML = "Check Out";
 	} else {
-                document.getElementById("add").value = "Check In";
+                document.getElementById("checkin").innerHTML = "Check In";
 	}
 });
-
+*/
 
 $("#del-button").click(function () {
 
-	getUser();
+	delUser();
 
 });
 
+$("#find-button").click(function () {
+	alert(getUser());
+});
+
+// This function searches
 function getUser(){
+	var query = new Parse.Query(LocationObject);
+	// query.equalTo("health",100);
+	var results = query.find({
+		success: function(result){
+			console.log("found");
+			// result is the array of LocationObject
+			// put functions in here to modify html.
+			// members of the LocationObject class are:
+			// lat
+			// long
+			// UserID
+		}, error: function(model, error){
+			console.log("not found");
+		}
+	});
+}
+
+function delUser(){
 	var query = new Parse.Query(UserProfile);
 	// query.equalTo("health",100);
 	query.find({
@@ -85,19 +131,10 @@ function getUser(){
 					}
 				});
 			}
+			return results;
 		}, error: function(model, error){
 			console.log("not found");
 		}
 	});
 }
 
-userProfile.save({name: "Tim", health: 100, sanity: 25}, {
-	success: function(object) {
-		$(".success").show();
-		console.log("Ya succeeded");
-	},
-	error: function(model, error) {
-		$(".error").show();
-		console.log("Ya failed");
-	}
-});

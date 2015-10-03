@@ -3,27 +3,39 @@ body {
 }
 #main {
 	margin: 0px 0px;
+	text-align: center;
+	font: 25px trebuchet, bold,sans-serif;
+	color: #1D2F57;
 }
-#toolbar {
-	background-color:#00ffff;
-	margin: 0px 0px;
-}
-#lower {
-	margin: 0px 0px;
-}
-#friends {
-	background-color:#ff00ff;
-	display: inline-block;
-	height: 100%;
-}
-#map {
-	display: inline-block;
-	height: 100%;
-	vertical-align: text-top;
-}
-#locations {
-	background-color:#f00fff;
-	display: inline-block;
-	height: 100%;
-	float:right;
-}
+	#toolbar {
+		background-color:#7483A2;
+		margin: 0px 0px;
+	}
+		#title {
+			display: inline-block;
+		}
+		#checkin {
+			display: inline-block;
+			float: right;
+			width: 10%;
+			vertical-align: text-bottom;
+		}
+	#lower {
+		margin: 0px 0px;
+	}
+		#friends {
+			background-color:#7FBA89;
+			display: inline-block;
+			height: 100%;
+		}
+		#map {
+			display: inline-block;
+			height: 100%;
+			vertical-align: text-top;
+		}
+		#locations {
+			background-color:#7FBA89;
+			display: inline-block;
+			height: 100%;
+			float:right;
+		}

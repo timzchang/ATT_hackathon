@@ -57,26 +57,21 @@
 
 		$("#add").click(function() {
 			if(document.getElementById("add").value == "Check In") {
+				var locationObject = new LocationObject();
+				locationObject.save({userID: 5, lat: 25, lon: -5}, {
+					success: function(object) {
+                                        	$(".success").show();
+                                	},
+                                	error: function(model, error) {
+                                        	$(".error").show();
+                                	}
+                        	});
+				buildingObject.increment("count");
+				buildingObject.save();
                                 document.getElementById("add").value = "Check Out";
                         } else {
                                 document.getElementById("add").value = "Check In";
                         }
-			var locationObject = new LocationObject();
-			locationObject.save({userID: 5, lat: 25, lon: -5}, {
-				success: function(object) {
-					$(".success").show();
-				},
-				error: function(model, error) {
-					$(".error").show();
-				}
-			});
-			buildingObject.increment("count");
-			buildingObject.save();
-		});
-
-		$("#delete").click(function() {
-			var query = new Parse.Query(LocationObject);	
-
 		});
 
 	</script>

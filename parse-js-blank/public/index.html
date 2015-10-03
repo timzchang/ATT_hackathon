@@ -12,6 +12,14 @@
 	
 	<script type="text/javascript">
 		window.onload = function init() {
+			resize();
+		};
+		
+		window.onresize = function resizewin() {
+			resize();
+		};
+		
+		function resize() {
 			var win = $(window);
 			var win_width = win.width();
 			var win_height = win.height();

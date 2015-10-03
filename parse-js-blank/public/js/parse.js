@@ -4,28 +4,30 @@ var hp = 99;
 
 var LocationObject = Parse.Object.extend("LocationObject");
 
-                var BuildingObject = Parse.Object.extend("BuildingObject");
-                // var buildingObject = new BuildingObject();
-                buildingObject.save({name: "Building", count: 0}, {
-                        success: function(object) {
-                                $(".success").show();
-                        },
-                        error: function(model, error) {
-                                $(".error").show();
-                        }
-                });
+var BuildingObject = Parse.Object.extend("BuildingObject");
+var buildingObject = new BuildingObject();
+/*buildingObject.save({name: "Building", count: 0}, {
+	success: function(object) {
+		$(".success").show();
+	},
+	error: function(model, error) {
+		$(".error").show();
+	}
+});
+*/
+var query = new Parse.Query(LocationObject);
+query.equalTo("objectID");
+query.count({
+	success: function(count) {
+		buildingObject.set("count", count);
+		buildingObject.save();
+	},
+	error: function(error) {
+                //failed
+            }
+        });
 
-                var query = new Parse.Query(LocationObject);
-                query.equalTo("objectID");
-                query.count({
-                        success: function(count) {
-                                buildingObject.set("count", count);
-                                buildingObject.save();
-                        },
-                        error: function(error) {
-                                //failed
-                        }
-                });
+
 
 
 $("#add-button").click(function() {

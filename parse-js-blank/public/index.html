@@ -9,36 +9,42 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
-	<script type="text/javascript" src="handlebars-v4.0.2.js"></script>
+	<script type="text/javascript" src="js/sizing.js"></script>
+	<script type="text/javascript" src="js/map.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTvAA8ktn5QDX2Txus7Tl_Dwj4Z5RSs14&signed_in=true&callback=initMap" async defer></script>
+	<!--<script type="text/javascript" src="handlebars-v4.0.2.js"></script>-->
 </head>
 
 <body>
-  
 	<div id="main">
-		<div style="display:none" class="error">
-			Looks like there was a problem saving the test object. Make sure you've set your application ID and javascript key correctly in the call to <code>Parse.initialize</code> in this file.
+		<div id="toolbar">Toolbar</div>
+		<div id="lower">
+			<div id="friends">Friends</div>
+			<div id="map"></div>
+			<div id="locations">location</div>
 		</div>
+		<div id="bottom">
 
-		<div style="display:none" id="greeting" class="success">
-			<p>We've also just created your first object using the following code:</p>
-			<p>Hi Rosalyn!!!!!</p>
-      	</div>
+			<div style="display:block" id="greeting" class="success">
+				<p>We've also just created your first object using the following code:</p>
+				<p>Hi Rosalyn!!!!!</p>
+			</div>
 
-      	<div style="display:none" id="test-button" class="success">
-			<button type="button">Click?</button><br/>
+			<div style="display:block" id="test-button" class="success">
+				<button type="button">Click?</button><br/>
+			</div>
+
+			<div style="display:block" id="del-button" class="success">
+				<button type="button">Delete!</button><br/>
+			</div>
+
+			<code>
+			  var TestObject = Parse.Object.extend("TestObject");<br/>
+			  var testObject = new TestObject();<br/>
+			  testObject.save({foo: "bar"});
+			</code>
 		</div>
-
-		<div style="display:block" id="del-button" class="success">
-			<button type="button">Delete!</button><br/>
-		</div>
-
-        <code>
-          var TestObject = Parse.Object.extend("TestObject");<br/>
-          var testObject = new TestObject();<br/>
-          testObject.save({foo: "bar"});
-        </code>
-    </div>
-  </div>
+	</div>
 
   <script type="text/javascript">
     Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");

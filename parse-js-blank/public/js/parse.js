@@ -72,7 +72,7 @@ function checkin() {
 	var text = document.getElementById("checkin").innerHTML;
 	if (text==="<br>check in") {
 		var locationObject = new LocationObject();
-		locationObject.save({userID: 5, lat: 25, lon: -5}, {
+		locationObject.save({userID: 5, lat: getLat(), lon: getLong()}, {
 			success: function(object) {
 				$(".success").show();
                         },

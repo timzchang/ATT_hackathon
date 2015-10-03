@@ -1,3 +1,5 @@
+var pos;
+
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 41.7030, lng: -86.2390},
@@ -8,7 +10,7 @@ function initMap() {
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
-		var pos = {
+		pos = {
 			lat: position.coords.latitude,	
 			lng: position.coords.longitude
 		};
@@ -30,4 +32,12 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.setContent(browserHasGeolocation ?
 	'Error: The Geolocation service failed.' :
 	'Error: Your browser doesn\'t support geolocation.');
+}
+
+function getLat() {
+	return pos.lat;
+}
+
+function getLong() {
+	return pos.lng;
 }

@@ -12,38 +12,8 @@
 </head>
 
 <body>
-  
 	<div id="main">
-		<div style="display:none" class="error">
-			Looks like there was a problem saving the test object. Make sure you've set your application ID and javascript key correctly in the call to <code>Parse.initialize</code> in this file.
-		</div>
-
-		<div style="display:none" class="success">
-			<p>We've also just created your first object using the following code:</p>
-      
-        <code>
-          var TestObject = Parse.Object.extend("TestObject");<br/>
-          var testObject = new TestObject();<br/>
-          testObject.save({foo: "bar"});
-        </code>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-    Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
-
-    
-		var UserProfile = Parse.Object.extend("UserProfile");
-		var userProfile = new UserProfile();
-			userProfile.save({name: "Tim", health: 100, sanity: 25}, {
-			success: function(object) {
-				$(".success").show();
-			},
-			error: function(model, error) {
-				$(".error").show();
-			}
-		});
-	</script>
+	</div>
 </body>
 
 </html>

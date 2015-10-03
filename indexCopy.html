@@ -47,28 +47,40 @@
   <script type="text/javascript">
 	Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
 		
-		var LocationObject = Parse.Object.extend("Location");
+		var LocationObject = Parse.Object.extend("LocationObject");
+//		Parse.Object.registerSubclass('LocationObject', LocationObject);
 /*		var locationObject = new LocationObject();
-			locationObject.save({userID: 0, lat: 47, lon: -86}, {
+			locationObject.save({userID: 2, lat: 90, lon: 0}, {
 			success: function(object) {
 				$(".success").show();
 			},
 			error: function(model, error) {
 				$(".error").show();
 			}
-		});
-
-		var locationObject = LocationObject();*/
+		});*/
 
 		var query = new Parse.Query(LocationObject);
-		query.get("Nu7l1PL31z");
+		query.lessThan("lat", 40);
+		query.find({
+			success: function(results) {
+				for(var i = 0; i < results.length; i++) {
+					results[i].set("lat", 41);
+					results[i].save();
+				}
+			},
+			error: function(error) {
+				console.log("Error");
+			}
+		});
+/*		query.get("HARCsso8oX", {
+			success: function(object) {
+				object.destroy({});
+			},
+			error: function(error) {
+				console.log("Error in destroy");
+			}
+		});*/
 
-		query.unset("lat");
-//		locationObject.save();
-
-
-//		locationObject.destroy();
-		locationObject.save();
 	</script>
 </body>
 

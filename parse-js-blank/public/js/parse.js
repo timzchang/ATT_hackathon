@@ -2,6 +2,31 @@ Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65
 var UserProfile = Parse.Object.extend("UserProfile");
 var hp = 99;
 
+var LocationObject = Parse.Object.extend("LocationObject");
+
+                var BuildingObject = Parse.Object.extend("BuildingObject");
+                var buildingObject = new BuildingObject();
+                buildingObject.save({name: "Building", count: 0}, {
+                        success: function(object) {
+                                $(".success").show();
+                        },
+                        error: function(model, error) {
+                                $(".error").show();
+                        }
+                });
+
+                var query = new Parse.Query(LocationObject);
+                query.equalTo("objectID");
+                query.count({
+                        success: function(count) {
+                                buildingObject.set("count", count);
+                                buildingObject.save();
+                        },
+                        error: function(error) {
+                                //failed
+                        }
+                });
+
 
 $("#test-button").click(function() {
 	alert("Ya clicked me");
@@ -17,6 +42,26 @@ $("#test-button").click(function() {
 		}
 	});
 });
+
+$("#add").click(function() {
+	if(document.getElementById("add").value == "Check In") {
+		var locationObject = new LocationObject();
+		locationObject.save({userID: 5, lat: 25, lon: -5}, {
+			success: function(object) {
+				$(".success").show();
+                        },
+                        error: function(model, error) {
+                                $(".error").show();
+                        }
+                });
+                buildingObject.increment("count");
+                buildingObject.save();
+                document.getElementById("add").value = "Check Out";
+	} else {
+                document.getElementById("add").value = "Check In";
+	}
+});
+
 
 $("#del-button").click(function () {
 

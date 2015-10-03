@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="js/sizing.js"></script>
 	<script type="text/javascript" src="js/map.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTvAA8ktn5QDX2Txus7Tl_Dwj4Z5RSs14&signed_in=true&callback=initMap" async defer></script>
-	<!--<script type="text/javascript" src="handlebars-v4.0.2.js"></script>-->
+	<!--<script type="text/javascript" src="js/handlebars-v4.0.2.js"></script>-->
 </head>
 
 <body>
@@ -45,67 +45,7 @@
 			</code>
 		</div>
 	</div>
-
-  <script type="text/javascript">
-    Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
-
-    	var UserProfile = Parse.Object.extend("UserProfile");
-		var userProfile = new UserProfile();
-		var hp = 99;
-		
-
-		$("#test-button").click(function() {
-			// alert("Ya clicked me");
-
-			userProfile.save({name: "Tim", health: hp--, sanity: 25}, {
-				success: function(object) {
-					$(".success").show();
-					console.log("Ya succeeded");
-				},
-				error: function(model, error) {
-					$(".error").show();
-					console.log("Ya failed");
-				}
-			});
-		});
-
-		$("#del-button").click(function () {
-
-			getUser();
-
-		});
-
-		function getUser(){
-			var query = new Parse.Query(UserProfile);
-			query.equalTo("health",100);
-			query.find({
-				success: function(object){
-					console.log("found");
-					$(event.results).destroy({
-						success: function(object){
-							console.log("destroyed object");
-						},
-						error: function(model, error){
-							console.log("couldn't destroy");
-						}
-					})
-				}, error: function(model, error){
-					console.log("not found");
-				}
-			});
-		}
-
-		userProfile.save({name: "Tim", health: 100, sanity: 25}, {
-			success: function(object) {
-				$(".success").show();
-				console.log("Ya succeeded");
-			},
-			error: function(model, error) {
-				$(".error").show();
-				console.log("Ya failed");
-			}
-		});
-	</script>
+	<script type="text/javascript" src="js/parse.js"></script>
 </body>
 
 </html>

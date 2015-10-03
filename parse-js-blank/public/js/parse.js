@@ -142,6 +142,7 @@ function getUser(){
 			// lat
 			// long
 			// UserID
+			return result;
 		}, error: function(model, error){
 			console.log("not found");
 		}

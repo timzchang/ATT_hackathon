@@ -5,7 +5,7 @@ var hp = 99;
 var LocationObject = Parse.Object.extend("LocationObject");
 
 var BuildingObject = Parse.Object.extend("BuildingObject");
-var buildingObject = new BuildingObject();
+//var buildingObject = new BuildingObject();
 /*buildingObject.save({name: "Building", count: 0}, {
 	success: function(object) {
 		$(".success").show();
@@ -15,6 +15,30 @@ var buildingObject = new BuildingObject();
 	}
 });
 */
+
+var query = new Parse.Query(BuildingObject);
+query.equalTo("name", "Innovation Park");
+query.first({
+	success: function(object) {
+		var buildingObject = object;
+		var query2 = new Parse.Query(LocationObject);
+		query2.equalTo("objectID");
+		query2.count({
+        		success: function(count) {
+                		buildingObject.set("count", count);
+                		buildingObject.save();
+        		},
+        		error: function(error) {
+                		//failed
+            		}
+        	});
+
+	},
+	error: function(error) {
+		//failed
+	}
+});
+/*
 var query = new Parse.Query(LocationObject);
 query.equalTo("objectID");
 query.count({
@@ -25,10 +49,7 @@ query.count({
 	error: function(error) {
                 //failed
             }
-        });
-
-
-
+        });*/
 
 $("#add-button").click(function() {
 	alert("Ya clicked me");
@@ -59,8 +80,18 @@ function checkin() {
                                 $(".error").show();
                         }
                 });
-                buildingObject.increment("count");
-                buildingObject.save();
+		var query3 = new Parse.Query(BuildingObject);
+		query3.equalTo("name", "Innovation Park");
+		query3.first({
+        		success: function(object) {
+                		var buildingObject = object;
+				buildingObject.increment("count");
+				buildingObject.save();
+		        },
+        		error: function(error) {
+                		//failed
+        		}
+		});
 		document.getElementById("checkin").innerHTML = "<br>check out";
 	}
 	else {

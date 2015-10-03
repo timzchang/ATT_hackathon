@@ -9,28 +9,73 @@
 <!--	<link rel="stylesheet" href="css/styles.css">-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+	
+	<script type="text/javascript">
+		window.onload = function init() {
+			var win = $(window);
+			var win_width = win.width();
+			var win_height = win.height();
+			setheight("main",win_height);
+			setheight("toolbar",win_height/10);
+			setheight("lower",win_height*9/10);
+			setheight("main",win_height);
+			setwidth("map",win_width/2);
+			setwidth("friends",win_width/4);
+			setwidth("locations",win_width/4);
+		};
+		
+		function setwidth(id, width) {
+			document.getElementById(id).style.width = (width + "px");
+		}
+		
+		function setheight(id, height) {
+			document.getElementById(id).style.height = (height + "px");
+		}
+	</script>
 </head>
 
 <body>
 	<style>
+		body {
+			margin: 0px 0px;
+		}
+		#main {
+			margin: 0px 0px;
+		}
 		#toolbar {
-			background-color:#00ffff
+			background-color:#00ffff;
+			margin: 0px 0px;
+		}
+		#lower {
+			margin: 0px 0px;
 		}
 		#friends {
-			background-color:#ff00ff
+			margin: -1px;
+			background-color:#ff00ff;
+			display: inline-block;
+			height: 100%;
 		}
 		#map {
-			background-color:#ffff00
+			margin: -3px;
+			background-color:#ffff00;
+			display: inline-block;
+			height: 100%;
 		}
 		#locations {
-			background-color:#f00fff
+			margin: 0px;
+			background-color:#f00fff;
+			display: inline-block;
+			height: 100%;
+			float:right;
 		}
 	</style>
 	<div id="main">
 		<div id="toolbar">Toolbar</div>
-		<div id="friends">Friends</div>
-		<div id="map">map</div>
-		<div id="locations">location</div>
+		<div id="lower">
+			<div id="friends">Friends</div>
+			<div id="map">map</div>
+			<div id="locations">location</div>
+		</div>
 	</div>
 </body>
 

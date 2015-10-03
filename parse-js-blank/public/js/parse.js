@@ -115,9 +115,12 @@ function getUser(){
 	});
 }
 
+
+// This function searches for LocationObjects that meet constraints and deletes them
 function delUser(){
-	var query = new Parse.Query(UserProfile);
+	var query = new Parse.Query(LocationObject);
 	// query.equalTo("health",100);
+	// constraints here.
 	query.find({
 		success: function(results){
 			console.log("found");

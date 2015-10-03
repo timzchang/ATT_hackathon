@@ -1,13 +1,13 @@
 Parse.initialize("cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3", "ZtZHoIzn1IfXu68c65mMikShyhXbiwu1Gv7VNa4g");
 
 var UserProfile = Parse.Object.extend("UserProfile");
-var userProfile = new UserProfile();
+
 var hp = 99;
 
 
 $("#test-button").click(function() {
 	// alert("Ya clicked me");
-
+	var userProfile = new UserProfile();
 	userProfile.save({name: "Tim", health: hp--, sanity: 25}, {
 		success: function(object) {
 			$(".success").show();
@@ -28,18 +28,20 @@ $("#del-button").click(function () {
 
 function getUser(){
 	var query = new Parse.Query(UserProfile);
-	query.equalTo("health",100);
+	// query.equalTo("health",100);
 	query.find({
-		success: function(object){
+		success: function(result){
 			console.log("found");
-			$(event.results).destroy({
-				success: function(object){
-					console.log("destroyed object");
-				},
-				error: function(model, error){
-					console.log("couldn't destroy");
-				}
-			})
+			for(var i=0;i<result.length;i++){
+				result[i].destroy(function () {
+					success: function(){
+						console.log("destroyed");
+					},
+					error: function(){
+						console.log("can't destory");
+					}
+				});
+			}
 		}, error: function(model, error){
 			console.log("not found");
 		}

@@ -6,113 +6,16 @@
 	<meta name="description" content="Study Buddy">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/reset.css">
-<!--	<link rel="stylesheet" href="css/styles.css">-->
+	<link rel="stylesheet" href="css/styles.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
 	
-	<script type="text/javascript">
-		window.onload = function init() {
-			resize();
-			initMap();
-		};
-		
-		window.onresize = function resizewin() {
-			resize();
-		};
-		
-		function resize() {
-			var win = $(window);
-			var win_width = win.width();
-			var win_height = win.height();
-			setheight("main",win_height);
-			setheight("toolbar",win_height/10);
-			setheight("lower",win_height*9/10);
-			setwidth("map",win_width/2-10);
-			setwidth("friends",win_width/4-10);
-			setwidth("locations",win_width/4-10);
-		};
-		
-		function setwidth(id, width) {
-			document.getElementById(id).style.width = (width + "px");
-		}
-		
-		function setheight(id, height) {
-			document.getElementById(id).style.height = (height + "px");
-		}
-	</script>
-	<script>
-		function initMap() {
-			var map = new google.maps.Map(document.getElementById('map'), {
-				center: {lat: 41.7030, lng: -86.2390},
-				zoom: 15
-			});
-			var infoWindow = new google.maps.InfoWindow({map: map});
-
-			// Try HTML5 geolocation.
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function(position) {
-				var pos = {
-					lat: position.coords.latitude,	
-					lng: position.coords.longitude
-				};
-	
-				infoWindow.setPosition(pos);
-				infoWindow.setContent('Location found.');
-				map.setCenter(pos);
-				}, function() {
-					handleLocationError(true, infoWindow, map.getCenter());
-				});
-			} else {
-			// Browser doesn't support Geolocation
-				handleLocationError(false, infoWindow, map.getCenter());
-			}
-		}
-
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  			infoWindow.setPosition(pos);
-			infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-		}
-
-	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTvAA8ktn5QDX2Txus7Tl_Dwj4Z5RSs14&signed_in=true&callback=initMap"
-	        async defer>
-	</script>
+	<script type="text/javascript" src="js/sizing.js"></script>
+	<script type="text/javascript" src="js/map.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTvAA8ktn5QDX2Txus7Tl_Dwj4Z5RSs14&signed_in=true&callback=initMap" async defer></script>
 </head>
 
 <body>
-	<style>
-		body {
-			margin: 0px 0px;
-		}
-		#main {
-			margin: 0px 0px;
-		}
-		#toolbar {
-			background-color:#00ffff;
-			margin: 0px 0px;
-		}
-		#lower {
-			margin: 0px 0px;
-		}
-		#friends {
-			background-color:#ff00ff;
-			display: inline-block;
-			height: 100%;
-		}
-		#map {
-			display: inline-block;
-			height: 100%;
-			vertical-align: text-top;
-		}
-		#locations {
-			background-color:#f00fff;
-			display: inline-block;
-			height: 100%;
-			float:right;
-		}
-	</style>
 	<div id="main">
 		<div id="toolbar">Toolbar</div>
 		<div id="lower">

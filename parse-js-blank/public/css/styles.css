@@ -22,20 +22,27 @@ body {
 		}
 	#lower {
 		margin: 0px 0px;
+		position:relative;
 	}
 		#friends {
 			background-color:#7FBA89;
-			display: inline-block;
-			height: 100%;
+			position:absolute;
+			top:0;
+			left:0;
+			height: 10%;
+			float:left;
 		}
 		#map {
 			display: inline-block;
 			height: 100%;
 			vertical-align: text-top;
+			position:absolute;
 		}
 		#locations {
 			background-color:#7FBA89;
 			display: inline-block;
-			height: 100%;
-			float:right;
+			height: 10%;
+			top:0;
+			right:0;
+			position:absolute;
 		}

@@ -1,28 +1,30 @@
-window.onload = function init() {
-	resize();
-	initMap();
-};
-
 window.onresize = function resizewin() {
 	resize();
 };
 
 function resize() {
-	var win = $(window);
-	var win_width = win.width();
-	var win_height = win.height();
-	setheight("main",win_height);
-	setheight("toolbar",win_height/10);
-	setheight("lower",win_height*9/10 - 2);
-	setwidth("map",2*win_width/3-7);
-	setwidth("friends",win_width/6-7);
-	setwidth("locations",win_width/6-7);
+	setheight("main",window_height());
+	setheight("toolbar",window_height()/10);
+	setheight("lower",window_height()*9/10 - 2);
+	setwidth("friends",window_width()/6-7);
+	setwidth("locations",window_width()/6-7);
+	updatemapwidth();
 };
 
 function setwidth(id, width) {
 	document.getElementById(id).style.width = (width + "px");
-}
+};
 
 function setheight(id, height) {
 	document.getElementById(id).style.height = (height + "px");
-}
+};
+
+function window_width() {
+	var win = $(window);
+	return win_width = win.width();
+};
+
+function window_height() {
+	var win = $(window);
+	return win_height = win.height();
+};

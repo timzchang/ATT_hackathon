@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "study_hack"
+    },
+    "study_hack": {
+      "applicationId": "cSHa81oGKG1Y3iVayTf5EfmrQ8DLt0Nb8797hJa3"
+    }
+  }
+}

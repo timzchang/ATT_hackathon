@@ -14,9 +14,9 @@ function resize() {
 	setheight("main",win_height);
 	setheight("toolbar",win_height/10);
 	setheight("lower",win_height*9/10 - 2);
-	setwidth("map",2*win_width/3-3);
-	setwidth("friends",win_width/6-3);
-	setwidth("locations",win_width/6-3);
+	setwidth("map",2*win_width/3-7);
+	setwidth("friends",win_width/6-7);
+	setwidth("locations",win_width/6-7);
 };
 
 function setwidth(id, width) {

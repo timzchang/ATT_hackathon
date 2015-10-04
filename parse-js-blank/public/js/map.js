@@ -10,7 +10,6 @@ function initMap() {
 		center: {lat: 41.7030, lng: -86.2390},
 		zoom: 14
 	});
-
 // geolocation
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
@@ -32,7 +31,7 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 	//users = JSON.parse(getUser());
-	for (i=0; i<10; i++) {
+	for (i=0; i<4; i++) {
 	//	lat = users.list[0].lat;	latitude
 	//	lng = users.list[0].lng;	longitude
 	//	title = users.list[0].title;	title

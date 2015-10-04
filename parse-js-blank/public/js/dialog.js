@@ -10,10 +10,12 @@ function closeDialog(save) {
 		var name = document.getElementById("nameInput").value;
 		var building = document.getElementById("buildingInput").value;
 		var subject = document.getElementById("subjectInput").value;
-		if(name==="tacospin") {
+		if(name==="tacospin" && building=="LaFortune" && subject=="tacos") {
 			document.getElementById("map").innerHTML = "<embed id='tacospin' src=http://tacospin.com> </embed>";
 			document.getElementById("tacospin").width = "700";
 			document.getElementById("tacospin").height = "500";
+		} else if(name==="development" && building=="Innovation Park" && subject=="irishhacks") {
+			document.getElementById("bottom").style.display = "block";
 		} else {
 			checkin(name, building, subject);
 		}

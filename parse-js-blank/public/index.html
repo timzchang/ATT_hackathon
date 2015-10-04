@@ -26,25 +26,56 @@
 			<div id="map"></div>
 			<div id="friends">
 				<a href="javascript:togglefriends()">
-					friends
+					users
 					<img src="images/dnArrow.png" id="friendarrow"/>
+					<br>
 				</A>
+				<table id="userlist_frame" cellspacing="2"><tr><td>
+				<table id="ulist" cellspacing="0" cellpadding="2">
+					<tr><td class="listitem">
+						Joshua Huseman
+					</td><td class="listitem">
+						Innovation Park
+					</td></tr>
+					<tr><td class="listitem">
+						Kelsey Meranda
+					</td><td class="listitem">
+						LaFortune
+					</td></tr>
+				</table>
+				<td><tr></table>
 			</div>
 			<div id="locations">
 				<a href="javascript:togglelocation()">
 					location
 					<img src="images/dnArrow.png" id="locarrow"/>
 				</A>
+				<table id="loclist_frame" cellspacing="2"><tr><td>
+				<table id="loclist" cellspacing="0" cellpadding="2">
+					<tr><td class="listitem">
+						Debartolo Hall
+					</td></tr>
+					<tr><td class="listitem">
+						Hesburgh Library
+					</td></tr>
+					<tr><td class="listitem">
+						Innovation Park
+					</td></tr>
+					<tr><td class="listitem">
+						LaFortune
+					</td></tr>
+				</table>
+				<td><tr></table>
 			</div>
 		</div>
 		<div id="dialogFadeout" style="display:none"></div> 
 		<div id="dialog" style="display:none">
 			Name:<input id="nameInput" size="15" value=""/><br>
 			Building:<select id="buildingInput">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="mercedes">Mercedes</option>
-				<option value="audi">Audi</option>
+				<option value="Debartolo">Debartolo Hall</option>
+				<option value="Hesburgh Library">Hesburgh Library</option>
+				<option value="Innovation Park">Innovation Park</option>
+				<option value="LaFortune">LaFortune</option>
 			</select><br>
 			Subject:<input id="subjectInput" size="15" value=""/>
 			
@@ -53,7 +84,7 @@
 			<br>
 			<a href="javascript:closeDialog(false)">Cancel</a>
 		</div>
-		<div id="bottom">
+		<div id="bottom" style="display:none">
 
 			<div style="display:block" id="greeting" class="success">
 				<p>We've also just created your first object using the following code:</p>

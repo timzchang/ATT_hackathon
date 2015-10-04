@@ -4,7 +4,7 @@ var users;
 	// This example creates a simple polygon representing the Bermuda Triangle.
 	// When the user clicks on the polygon an info window opens, showing
 	// information about the polygon's coordinates.
-
+users = [{lat: 41.6993, lng: -86.23455},{lat: 41.69825, lng: -86.2341},{lat: 41.703, lng: -86.23427},{lat: 41.6967, lng: -86.2313}];
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 41.7030, lng: -86.2390},
@@ -36,7 +36,8 @@ function initMap() {
 	//	lat = users.list[0].lat;	latitude
 	//	lng = users.list[0].lng;	longitude
 	//	title = users.list[0].title;	title
-		dropPin(41.698+0.001*i, -86.234+0.001*i, "Test");
+		// dropPin(41.698+0.001*i, -86.234+0.001*i, "Test");
+		dropPin(users[i].lat, users[i].lng, "Test");
 	}
 }
 

@@ -5,16 +5,7 @@ var hp = 99;
 var LocationObject = Parse.Object.extend("LocationObject");
 
 var BuildingObject = Parse.Object.extend("BuildingObject");
-//var buildingObject = new BuildingObject();
-/*buildingObject.save({name: "Building", count: 0}, {
-	success: function(object) {
-		$(".success").show();
-	},
-	error: function(model, error) {
-		$(".error").show();
-	}
-});
-*/
+
 
 var query = new Parse.Query(BuildingObject);
 query.equalTo("name", "Innovation Park");
@@ -38,18 +29,8 @@ query.first({
 		//failed
 	}
 });
-/*
-var query = new Parse.Query(LocationObject);
-query.equalTo("objectID");
-query.count({
-	success: function(count) {
-		buildingObject.set("count", count);
-		buildingObject.save();
-	},
-	error: function(error) {
-                //failed
-            }
-        });*/
+
+
 
 $("#add-button").click(function() {
 	alert("Ya clicked me");
@@ -68,7 +49,7 @@ $("#add-button").click(function() {
 });
 
 
-function checkin() {
+function checkin(name, building, subject) {
 	var text = document.getElementById("checkin").innerHTML;
 	if (text==="<br>check in") {
 		var locationObject = new LocationObject();
@@ -126,14 +107,17 @@ $("#del-button").click(function () {
 });
 
 $("#find-button").click(function () {
-	alert(getUser());
+	alert("AHHHHHHHHHHH");
+	var lat = getUser();
+	console.log(lat[i].lat);
 });
 
 // This function searches
 function getUser(){
 	var query = new Parse.Query(LocationObject);
 	// query.equalTo("health",100);
-	var results = query.find({
+	var listOfObjects;
+	query.find({
 		success: function(result){
 			console.log("found");
 			// result is the array of LocationObject
@@ -142,13 +126,17 @@ function getUser(){
 			// lat
 			// long
 			// UserID
+
 			return result;
 		}, error: function(model, error){
 			console.log("not found");
 		}
 	});
+	return listOfObjects;
 }
 
+var lat = getUser();
+alert(lat[0].lat);
 
 // This function searches for LocationObjects that meet constraints and deletes them
 function delUser(){

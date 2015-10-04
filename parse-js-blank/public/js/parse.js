@@ -53,12 +53,12 @@ function checkin(name, building, subject) {
 	var text = document.getElementById("checkin").innerHTML;
 	if (text==="<br>check in") {
 		var locationObject = new LocationObject();
-		locationObject.save({userID: 5, lat: getLat(), lon: getLong()}, {
+		locationObject.save({userID: 4, lat: getLat(), lon: getLong()}, {
 			success: function(object) {
 				$(".success").show();
-                        },
+                       },
                         error: function(model, error) {
-                                $(".error").show();
+                               $(".error").show();
                         }
                 });
 		var query3 = new Parse.Query(BuildingObject);

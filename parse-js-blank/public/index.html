@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="js/sizing.js"></script>
 	<script type="text/javascript" src="js/popout.js"></script>
 	<script type="text/javascript" src="js/map.js"></script>
+	<script type="text/javascript" src="js/dialog.js"></script>
 	<!-- <script type="text/javascript" src="js/checkin.js"></script>-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTvAA8ktn5QDX2Txus7Tl_Dwj4Z5RSs14&signed_in=true&callback=initMap" async defer></script>
 	<!--<script type="text/javascript" src="js/handlebars-v4.0.2.js"></script>-->
@@ -20,7 +21,7 @@
 
 <body>
 	<div id="main">
-		<div id="toolbar"><div id="title"><br>Study Spaces</div><a href="javascript:checkin()"><div id="checkin"><br>check in</div></a></div>
+		<div id="toolbar"><div id="title"><br>Study Spaces</div><a href="javascript:openDialog()"><div id="checkin"><br>check in</div></a></div>
 		<div id="lower">
 			<div id="map"></div>
 			<div id="friends">
@@ -36,9 +37,45 @@
 				</A>
 			</div>
 		</div>
+		<div id="dialogFadeout" style="display:none"></div> 
+		<div id="dialog" style="display:none">
+			Name:<input id="nameInput" size="15" value=""/><br>
+			Building:<select id="buildingInput">
+				<option value="volvo">Volvo</option>
+				<option value="saab">Saab</option>
+				<option value="mercedes">Mercedes</option>
+				<option value="audi">Audi</option>
+			</select><br>
+			Subject:<input id="subjectInput" size="15" value=""/>
+			
+			<br>
+			<a href="javascript:closeDialog(true)">Check In</a>
+			<br>
+			<a href="javascript:closeDialog(false)">Cancel</a>
+		</div>
+		<div id="bottom">
 
+			<div style="display:block" id="greeting" class="success">
+				<p>We've also just created your first object using the following code:</p>
+				<p>Hi Rosalyn!!!!!</p>
+			</div>
+
+			<div style="display:block" id="add-button" class="success">
+				<button type="button">Add</button><br/>
+			</div>
+
+			<div style="display:block" id="find-button" class="success">
+				<button type="button">Find</button><br/>
+
+			<div style="display:block" id="del-button" class="success">
+				<button type="button">Delete!</button><br/>
+			</div>
+
+			<div style="display:block" class="success">
+                        	<input type="button" value = "Check In" id="add"></input>
+                	</div>
+		</div>
 	</div>
-
 </body>
 
 </html>

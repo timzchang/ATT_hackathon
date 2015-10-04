@@ -8,6 +8,10 @@ function resize() {
 	setheight("lower",window_height()*9/10 - 2);
 	setwidth("friends",window_width()/6-7);
 	setwidth("locations",window_width()/6-7);
+	setwidth("dialog",window_width()/3);
+	setheight("dialog",window_height()/2);
+	setleft("dialog",window_width()/3);
+	settop("dialog",window_height()/4);
 	updatemapwidth();
 };
 
@@ -17,6 +21,14 @@ function setwidth(id, width) {
 
 function setheight(id, height) {
 	document.getElementById(id).style.height = (height + "px");
+};
+
+function setleft(id, pix) {
+	document.getElementById(id).style.left = (pix + "px");
+};
+
+function settop(id, pix) {
+	document.getElementById(id).style.top = (pix + "px");
 };
 
 function window_width() {
